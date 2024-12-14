@@ -69,8 +69,14 @@ jobs:
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
-          cd ./app/ && npm i
+          cd ./app/
+          npm i
+          npm install --global vercel@latest
           npm run build
-          ls .
+
+          cd ./dist/
+          vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+          vercel build --token=${{ secrets.VERCEL_TOKEN }}
+          vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+
           echo success!
-      #     ssh user@server.com 'cd /path/to/app && docker-compose pull && docker-compose up -d'
