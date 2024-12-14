@@ -1,0 +1,12 @@
+@function calcFluid($w-min, $w-max, $base: 0, $v-min: 320px, $v-max: 1920px) {
+    $k: calc(($w-max - $w-min) / ($v-max - $v-min));
+    $b: $w-min - $k * $v-min;
+
+    @if $base ==0 {
+        @return calc(#{$k} * 100vw + #{$b});
+    }
+
+    @else {
+        @return calc(#{$base} - (#{$k} * 100vw + #{$b}));
+    }
+}

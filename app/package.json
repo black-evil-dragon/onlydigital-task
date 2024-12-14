@@ -2,9 +2,9 @@
   "name": "app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.tsx",
   "scripts": {
-    "start": "webpack serve --mode development",
+    "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production"
   },
   "keywords": [],
@@ -15,6 +15,7 @@
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.26.0",
+    "@svgr/webpack": "^8.1.0",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
     "autoprefixer": "^10.4.20",
@@ -22,12 +23,13 @@
     "clean-webpack-plugin": "^4.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
+    "eslint-webpack-plugin": "^4.2.0",
     "html-webpack-plugin": "^5.6.3",
     "mini-css-extract-plugin": "^2.9.2",
     "node-sass": "^9.0.0",
     "postcss-loader": "^8.1.1",
     "postcss-preset-env": "^10.1.1",
-    "sass": "^1.82.0",
+    "sass": "^1.83.0",
     "sass-loader": "^16.0.4",
     "style-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.3.10",
@@ -38,6 +40,7 @@
     "webpack-dev-server": "^5.1.0"
   },
   "dependencies": {
+    "gsap": "^3.12.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "swiper": "^11.1.15"
