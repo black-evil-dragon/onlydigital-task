@@ -16,7 +16,7 @@
 
         user-select: none;
     
-        @media (min-width: 768px) {
+        @media screen and (min-width: 768px) {
             border-right: 1px solid rgba(66, 86, 122, .1);
             border-left: 1px solid rgba(66, 86, 122, .1);
 
@@ -53,7 +53,7 @@
             line-height: calcFluid(24px, 68px);
 
 
-            @media (min-width: 768px) {
+            @media screen and (min-width: 768px) {
                 padding-left: calcFluid(0px, 80px);
                 &::before {
                     content: "";
@@ -85,7 +85,7 @@
 
         margin-bottom: calcFluid(100px, 217px);
 
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             margin-bottom: calcFluid(212px, 217px);
         }
     
@@ -94,7 +94,7 @@
             width: 100%;
             height: 1px;
 
-            @media (min-width: 768px) {
+            @media screen and (min-width: 768px) {
                 content: "";
                 position: absolute;
                 background: rgba(66, 86, 122, 1);
@@ -105,7 +105,7 @@
 
 
     &_pagination {
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -170,7 +170,7 @@
                 svg {
                     stroke: #42567A;
 
-                    @media (max-width: 768px) {
+                    @media screen and (max-width: 768px) {
                         width: 25%;
                     }
                 }
@@ -207,7 +207,7 @@
 
         transition: all .1s ease-in-out;
 
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             position: absolute;
             top: calcFluid(20px, 60px);
             flex-direction: column;
@@ -236,8 +236,9 @@
 
         &__arrow {
             position: absolute;
+            z-index: 10;
             bottom: 50%;
-            left: 20px;
+            left: calcFluid(0px, 20px);
 
             display: flex;
             justify-content: center;
@@ -254,13 +255,18 @@
             transition: opacity .1s ease-in-out;
 
 
+            @media screen and (max-width: 1300px) {
+                left: 0;
+            }
+
+
             svg {
                 stroke: rgba(56, 119, 238, 1);
             }
 
             &.--next {
                 left: auto;
-                right: 40px;
+                right: calcFluid(10px, 40px);
 
                 transform: rotate(180deg);
             }
@@ -269,7 +275,7 @@
                 opacity: 0;
             }
 
-            @media (max-width: 768px) {
+            @media screen and (max-width: 768px) {
                 display: none;
             }
         }
@@ -315,13 +321,13 @@
 
         height: 100%;
 
-        @media (max-width: 1600px) {
+        @media screen and (max-width: 1600px) {
             scale: .8;
-            @media (max-width: 1400px) {
+            @media screen and (max-width: 1400px) {
                 scale: .7;
-                @media (max-width: 1024px) {
+                @media screen and (max-width: 1024px) {
                     scale: .65;
-                    @media (max-width: 768px) {
+                    @media screen and (max-width: 768px) {
                         scale: 1;
                         bottom: calcFluid(57px, 80px)
                     }
@@ -338,7 +344,7 @@
             width: 530px;
             height: 530px;
 
-            @media (min-width: 768px) {
+            @media screen and (min-width: 768px) {
                 display: block;
                 &::before {
                     content: "";
@@ -444,7 +450,7 @@
                 line-height: calcFluid(120px, 160px);
                 letter-spacing: -0.02em;
 
-                @media (max-width: 768px) {
+                @media screen and (max-width: 768px) {
                     font-size: calcFluid(56px, 200px);
                     line-height: calcFluid(72px, 160px);
                 }
