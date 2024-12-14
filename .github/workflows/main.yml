@@ -1,0 +1,72 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Cache npm dependencies
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # Install npm dependencies
+      - name: Install dependencies
+        run: |
+          cd client && npm ci
+
+      # Cache Docker layers
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.docker-cache
+          key: ${{ runner.os }}-docker-${{ hashFiles('docker-compose.prod.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-docker-
+
+      - name: Download Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      # Build and run the Docker containers
+      - name: Build client app
+        run: |
+          docker-compose -f docker-compose.prod.yml up --build -d --no-cache
+
+      # Run client tests (если они есть)
+      # - name: Run client tests
+      #   run: |
+      #     docker exec -w /app ==client-container== npm run test
+
+      # Stop and remove Docker containers after tests
+      - name: Stop and remove containers
+        run: docker-compose -f docker-compose.prod.yml down
+
+      # Copy build artifacts to dist folder
+      - name: Copy build artifacts
+        run: |
+          cp -r app/dist/* ./dist/
+
+      # Deploy to Server
+      - name: Deploy
+        if: github.ref == 'refs/heads/main' && success()
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          npm install -g vercel
+          vercel --prod --confirm
+          echo success!
+      #     ssh user@server.com 'cd /path/to/app && docker-compose pull && docker-compose up -d'

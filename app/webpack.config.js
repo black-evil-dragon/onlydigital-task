@@ -35,14 +35,15 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          { loader: "style-loader" },
+          MiniCssExtractPlugin.loader,
+          // { loader: "style-loader" },
           { loader: "css-loader" },
           { loader: "sass-loader" },
         ],
       },
       {
         test: /\.css?$/,
-        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+        use: [MiniCssExtractPlugin.loader, { loader: "css-loader" }],
       },
       {
         test: /\.svg$/i,
@@ -55,7 +56,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "main.bundle.css",
+    }),
     new CleanWebpackPlugin(),
   ],
   devServer: {
