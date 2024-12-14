@@ -25,7 +25,7 @@ jobs:
       # Install npm dependencies
       - name: Install dependencies
         run: |
-          cd client && npm ci
+          cd app && npm ci
 
       # Cache Docker layers
       - name: Cache Docker layers
