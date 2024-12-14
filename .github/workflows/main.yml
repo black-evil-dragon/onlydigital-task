@@ -62,10 +62,6 @@ jobs:
       # - name: Stop and remove containers
       #   run: docker-compose -f docker-compose.prod.yml down
 
-      - name: Build App
-        working-directory: ./app
-        run: npm i && npm run build
-
 
   deploy:
     needs: build
@@ -73,6 +69,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Build App
+        working-directory: ./app
+        run: npm i && npm run build
 
       - name: Install Vercel CLI
         working-directory: ./app/dist
