@@ -8,7 +8,7 @@
     &__content {
         position: relative;
         
-        max-height: max-content;
+        max-height: 100vh;
 
         padding-bottom: calcFluid(13px, 100px);
 
@@ -42,7 +42,7 @@
     &__title {
         width: min-content;
 
-        padding-top: calcFluid(59px, 170px);
+        padding-top: calcFluid(59px, 100px);
         margin-bottom: calcFluid(146px, 176px);
 
         &--text {
