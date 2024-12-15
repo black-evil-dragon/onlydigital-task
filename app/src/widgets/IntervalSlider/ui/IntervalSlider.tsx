@@ -2,7 +2,7 @@
 import React from 'react';
 
 import 'swiper/css';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules'
 
 
@@ -34,6 +34,8 @@ const IntervalSlider: React.FunctionComponent<IntervalSliderProps> = () => {
     const [sliderTitle, setSliderTitle] = React.useState(intervalSliders[intervalIndex].name)
 
     const [windowDimensions, setWindowDimensions] = React.useState(getWindowDimensions());
+
+    const sliderRef = React.useRef<SwiperRef | null>(null)
 
 
     /*
@@ -83,6 +85,8 @@ const IntervalSlider: React.FunctionComponent<IntervalSliderProps> = () => {
             setSlides(intervalSliders[intervalIndex].slides)
             setSliderTitle(intervalSliders[intervalIndex].name)
 
+            sliderRef.current && sliderRef.current.swiper.slideTo(0)
+
             clearTimeout(timer)
         }, 100)
     }, [intervalIndex])
@@ -97,6 +101,7 @@ const IntervalSlider: React.FunctionComponent<IntervalSliderProps> = () => {
             {windowDimensions.width <= 768 && <div className={`interval-slider_slider--title`}>{sliderTitle}</div>}
             <div className="interval-slider_slider__container">
                 <Swiper
+                    ref={sliderRef}
                     slidesPerView={3}
                     spaceBetween={80}
                     breakpoints={{

@@ -16,7 +16,7 @@
 
         user-select: none;
     
-        @media screen and (min-width: 768px) {
+        @media screen and (min-width: 769px) {
             border-right: 1px solid rgba(66, 86, 122, .1);
             border-left: 1px solid rgba(66, 86, 122, .1);
 
@@ -53,7 +53,7 @@
             line-height: calcFluid(24px, 68px);
 
 
-            @media screen and (min-width: 768px) {
+            @media screen and (min-width: 769px) {
                 padding-left: calcFluid(0px, 80px);
                 &::before {
                     content: "";
@@ -85,8 +85,8 @@
 
         margin-bottom: calcFluid(100px, 217px);
 
-        @media screen and (max-width: 768px) {
-            margin-bottom: calcFluid(212px, 217px);
+        @media screen and (max-width: 769px) {
+            margin-bottom: calcFluid(217px, 230px);
         }
     
         &::after {
@@ -94,7 +94,7 @@
             width: 100%;
             height: 1px;
 
-            @media screen and (min-width: 768px) {
+            @media screen and (min-width: 769px) {
                 content: "";
                 position: absolute;
                 background: rgba(66, 86, 122, 1);
@@ -105,7 +105,7 @@
 
 
     &_pagination {
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 769px) {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -170,7 +170,7 @@
                 svg {
                     stroke: #42567A;
 
-                    @media screen and (max-width: 768px) {
+                    @media screen and (max-width: 769px) {
                         width: 25%;
                     }
                 }
@@ -207,12 +207,10 @@
 
         transition: all .1s ease-in-out;
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 769px) {
             position: absolute;
             top: calcFluid(20px, 60px);
             flex-direction: column;
-
-            // border-top: 1px solid rgba(199, 205, 217, 1);
 
             &--title {
                 font-size: calcFluid(16px, 25px);
@@ -275,7 +273,7 @@
                 opacity: 0;
             }
 
-            @media screen and (max-width: 768px) {
+            @media screen and (max-width: 769px) {
                 display: none;
             }
         }
@@ -327,7 +325,7 @@
                 scale: .7;
                 @media screen and (max-width: 1024px) {
                     scale: .65;
-                    @media screen and (max-width: 768px) {
+                    @media screen and (max-width: 769px) {
                         scale: 1;
                         bottom: calcFluid(57px, 80px)
                     }
@@ -344,7 +342,7 @@
             width: 530px;
             height: 530px;
 
-            @media screen and (min-width: 768px) {
+            @media screen and (min-width: 769px) {
                 display: block;
                 &::before {
                     content: "";
@@ -450,7 +448,7 @@
                 line-height: calcFluid(120px, 160px);
                 letter-spacing: -0.02em;
 
-                @media screen and (max-width: 768px) {
+                @media screen and (max-width: 769px) {
                     font-size: calcFluid(56px, 200px);
                     line-height: calcFluid(72px, 160px);
                 }

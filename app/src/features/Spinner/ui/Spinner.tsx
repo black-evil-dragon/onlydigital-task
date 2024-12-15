@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 
 import { IntervalSliders } from '@shared/data/history-dates';
 import { calculateAngle, SpinnerPoint } from '..';
+import { getWindowDimensions } from '@shared/model';
 
 
 interface SpinnerProps {
@@ -51,7 +52,11 @@ const Spinner: React.FunctionComponent<SpinnerProps> = ({
 
         const distance = Math.abs(angleDifference)
 
-        const duration = Math.max(500, Math.min(2000, distance * 7.5))
+        const duration = getWindowDimensions().width > 768 ? (
+            Math.max(1000, Math.min(1000, distance * 7.5))
+        ) : (
+            500
+        )
 
         gsap.to({ angle: pointAngle }, {
             angle: finalAngle,
@@ -63,8 +68,10 @@ const Spinner: React.FunctionComponent<SpinnerProps> = ({
         });
 
         setSliderInAnim(true)
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             setSliderInAnim(false)
+
+            clearTimeout(timer)
         }, duration)
     };
 
