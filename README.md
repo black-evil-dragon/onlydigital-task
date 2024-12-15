@@ -11,8 +11,8 @@
 ##### Клонирование
 
 ```
-git clone https://github.com/black-evil-dragon/only-task.git
-cd only-task
+git clone https://github.com/black-evil-dragon/onlydigital-task.git
+cd onlydigital-task
 ```
 
 
@@ -30,7 +30,7 @@ npm install
 npm run start
 ```
 
-##### Запуск с помощью Docker compose (в папке only-task)
+##### Запуск с помощью Docker compose (в папке onlydigital-task)
 
 ```
 docker-compose -f docker-compose.dev.yml up --build
